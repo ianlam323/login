@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Verify Email – IGCHK</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #e7f0ff;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      height:100vh;
+    }
+    .card {
+      background:white;
+      padding:30px;
+      width:350px;
+      border-radius:10px;
+      box-shadow:0 4px 10px rgba(0,0,0,0.15);
+    }
+    h2 { color:#1c4fa1; }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <h2>Email Verification</h2>
+  <p id="msg">Verifying...</p>
+</div>
+
+<script>
+const token = new URLSearchParams(location.search).get("token");
+
+fetch("/api/verify", {
+  method:"POST",
+  body:JSON.stringify({ token })
+})
+.then(r=>r.json())
+.then(j=>{
+  if (j.error) msg.textContent = j.error;
+  else msg.textContent = "Email verified! You can now log in.";
+});
+</script>
+
+</body>
+</html>
