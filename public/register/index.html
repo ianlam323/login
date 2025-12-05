@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Register – IGCHK</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #e7f0ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      width: 350px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
+    }
+
+    h2 { color: #1c4fa1; margin-top: 0; }
+
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 6px;
+      border: 1px solid #87a9d9;
+    }
+
+    button {
+      background: #1c4fa1;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover { background: #163f82; }
+  </style>
+</head>
+
+<body>
+<div class="card">
+  <h2>Create Account</h2>
+
+  <input id="email" type="email" placeholder="Email">
+  <input id="username" type="text" placeholder="Username">
+  <input id="password" type="password" placeholder="Password">
+
+  <button onclick="register()">Sign Up</button>
+
+  <p><a href="../login/">Already have an account?</a></p>
+</div>
+
+<script>
+async function register() {
+  let data = {
+    email: email.value,
+    username: username.value,
+    password: password.value
+  };
+
+  let res = await fetch("/api/register", {
+    method: "POST",
+    body: JSON.stringify(data)
+  });
+
+  let json = await res.json();
+  if (json.error) return alert(json.error);
+
+  alert("Account created! Check your email verification link.");
+}
+</script>
+
+</body>
+</html>
