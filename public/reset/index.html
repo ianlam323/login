@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Password Reset – IGCHK</title>
+  <style>
+    body{
+      font-family:Arial;
+      background:#e7f0ff;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      height:100vh;
+    }
+    .card{
+      background:white;
+      padding:30px;
+      width:350px;
+      border-radius:10px;
+      box-shadow:0 4px 10px rgba(0,0,0,0.15);
+    }
+    input,button{
+      width:100%;
+      padding:10px;
+      margin:8px 0;
+      border-radius:6px;
+      border:1px solid #87a9d9;
+    }
+    button{
+      background:#1c4fa1;
+      border:none;
+      color:white;
+      cursor:pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <h2>Reset Password</h2>
+  <input id="email" type="email" placeholder="Enter your email">
+  <button onclick="sendReset()">Send Reset Link</button>
+</div>
+
+<script>
+async function sendReset(){
+  let res = await fetch("/api/reset/request",{
+    method:"POST",
+    body:JSON.stringify({ email: email.value })
+  });
+  let json = await res.json();
+  alert(json.reset_url);
+}
+</script>
+
+</body>
+</html>
