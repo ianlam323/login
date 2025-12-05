@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin – IGCHK</title>
+  <style>
+    body{
+      font-family:Arial;
+      background:#e7f0ff;
+      padding:30px;
+    }
+    .card{
+      background:white;
+      padding:20px;
+      border-radius:10px;
+      box-shadow:0 4px 10px rgba(0,0,0,0.15);
+    }
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:20px;
+    }
+    th,td{
+      padding:10px;
+      border-bottom:1px solid #cbd6ef;
+      text-align:left;
+    }
+    th{
+      color:#1c4fa1;
+      font-weight:bold;
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <h2>Admin Dashboard</h2>
+
+  <table>
+    <thead>
+      <tr><th>ID</th><th>Email</th><th>Username</th><th>Verified</th></tr>
+    </thead>
+    <tbody id="users"></tbody>
+  </table>
+</div>
+
+<script>
+fetch("/api/admin/users")
+  .then(r=>r.json())
+  .then(data=>{
+    let html = "";
+    data.results.forEach(u=>{
+      html += `<tr>
+                 <td>${u.id}</td>
+                 <td>${u.email}</td>
+                 <td>${u.username}</td>
+                 <td>${u.verified}</td>
+               </tr>`;
+    });
+    users.innerHTML = html;
+  });
+</script>
+
+</body>
+</html>
