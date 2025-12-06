@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Admin Dashboard – IGC HK Exam</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #FFF8CC;
+        margin: 0;
+        padding: 0;
+    }
+
+    .header {
+        background: #0057b7;
+        padding: 20px;
+        color: white;
+        text-align: center;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: 25px auto;
+        background: white;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+        border-left: 5px solid #FFD500;
+        padding-left: 10px;
+        color: #333;
+    }
+
+    .user-list {
+        max-height: 200px;
+        overflow-y: auto;
+        border: 1px solid #ccc;
+        padding: 10px;
+        border-radius: 8px;
+        background: #fafafa;
+    }
+
+    .user-list label {
+        display: flex;
+        align-items: center;
+        margin: 5px 0;
+        font-size: 15px;
+    }
+
+    input[type="checkbox"] {
+        margin-right: 8px;
+    }
+
+    .card {
+        margin-top: 25px;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        background: #fdfdfd;
+    }
+
+    .btn {
+        background: #0057b7;
+        color: white;
+        padding: 12px 18px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 15px;
+        margin-top: 10px;
+    }
+
+    .btn:hover {
+        opacity: 0.9;
+    }
+
+    textarea {
+        width: 100%;
+        height: 120px;
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        font-size: 15px;
+    }
+</style>
+</head>
+<body>
+
+<div class="header">
+    <h1>IGC HK Exam – Admin Dashboard</h1>
+</div>
+
+<div class="container">
+
+    <h2>Select Users</h2>
+    <div class="user-list" id="userList">
+        <!-- Example users (you will later populate this from D1) -->
+        <label><input type="checkbox"> user001@example.com</label>
+        <label><input type="checkbox"> user002@example.com</label>
+        <label><input type="checkbox"> user003@example.com</label>
+        <label><input type="checkbox"> user004@example.com</label>
+    </div>
+
+    <div class="card">
+        <h2>Send File</h2>
+        <input type="file" id="fileUpload"><br>
+        <button class="btn">Send File to Selected Users</button>
+    </div>
+
+    <div class="card">
+        <h2>Send Message</h2>
+        <textarea placeholder="Enter message to send..."></textarea>
+        <button class="btn">Send Message to Selected Users</button>
+    </div>
+
+</div>
+
+</body>
+</html>
